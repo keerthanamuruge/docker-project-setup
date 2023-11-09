@@ -1,0 +1,6 @@
+<button (click)="getName()"> <span>user</span> </button>
+<a routerLink="createUser">createuser</a>
+<ul *ngFor="let m of users"> 
+    <li>{{m.name}}</li>
+</ul>
+<router-outlet></router-outlet>

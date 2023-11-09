@@ -1,0 +1,47 @@
+version: '1'
+services:
+  db:
+    image: postgres:latest
+    environment:   
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: users
+      POSTGRES_USER: postgres
+    ports:   
+      - 5432:5432
+    networks:
+      - app-tier
+    volumes:
+      - ./postgres:/docker-entrypoint-initdb.d
+
+    
+  backend-api:
+    build:
+      context: ./flask_backend
+      dockerfile: Dockerfile
+    image: user/flask_backend
+    depends_on:
+      - db
+    networks:
+      - app-tier
+    ports:
+     - "5000:5000"
+    environment:
+      - url="postgresql://postgres:db@localhost:5433/users"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: user/frontend
+    networks:
+      - app-tier
+    ports:
+      - "80:80"
+
+volumes:
+  db:
+    driver: local
+
+networks:
+  app-tier:
+    driver: bridge
