@@ -41,15 +41,15 @@ Nginx is designed to efficiently serve static content, making it a great choice 
 
 If the name is different this cmd have to mention file name:
 
-docker build -t angular-demo -f DOCKERFILE .
+```docker build -t angular-demo -f DOCKERFILE .```
 
 Else use this
 
-docker build -t angular-demo .
+```docker build -t angular-demo .```
 
 ### To create a container and run
 
-docker run -it -p 80:80 angular-demo
+```docker run -it -p 80:80 angular-demo```
 ## To run in Interactive mode 
-docker run -d -p 80:80 angular-demo
+```docker run -d -p 80:80 angular-demo```
 Detective mode runs in the background
