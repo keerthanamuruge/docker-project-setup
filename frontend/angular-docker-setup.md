@@ -36,3 +36,20 @@ Nginx is designed to efficiently serve static content, making it a great choice 
 - COPY instruction is used in a multi-stage Docker build to copy the built Angular application files (located in /app/dist/frontend/ within the "build" stage) into the directory /usr/share/nginx/html in the final image. These files will be served by Nginx, which is a common practice for deploying Angular applications with Docker.
 - 80 is the default port for nginx.
 
+### To Create Image:
+
+
+If the name is different this cmd have to mention file name:
+
+docker build -t angular-demo -f DOCKERFILE .
+
+Else use this
+
+docker build -t angular-demo .
+
+### To create a container and run
+
+docker run -it -p 80:80 angular-demo
+## To run in Interactive mode 
+docker run -d -p 80:80 angular-demo
+Detective mode runs in the background
